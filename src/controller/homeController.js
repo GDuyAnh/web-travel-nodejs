@@ -1,12 +1,11 @@
 import pool from "../configs/connectDB"
+
 let getHomepage = async (req, res) => {
 
     const [rows, fields] = await pool.execute('SELECT * FROM  `city`');
     console.log('row', rows);
 
-    return res.render('home.ejs', { datacity: rows, test: 'abc string ' })
-
-
+    return res.render('homecity.ejs', { datacity: rows, user: null })
 
 }
 
@@ -23,26 +22,23 @@ let checklogin = async (req, res) => {
     let password = req.body.password
     console.log('username', username);
     console.log('password', password);
+    const [rows, fields] = await pool.execute('SELECT * FROM  `city`');
+    const [User, fields1] = await pool.execute('SELECT `user`.*, USER_NAME, PASWORD FROM `user` JOIN `account` ON `user`.ID = `account`.`ID` WHERE `USER_NAME` = ? AND `PASWORD` = ?', [username, password]);
 
+    console.log('row', User);
 
-    const [rows, fields] = await pool.execute('SELECT user.ID , user.NAME, account.PASWORD, account.USER_NAME, user.EMAIL FROM `user` JOIN account ON user.ID = account.ID');
-    console.log('row', rows);
-
-
-
-
-
-    return res.send('abc')
+    return res.render('homecity.ejs', { datacity: rows, user: User })
 }
 
 
 let getplace = async (req, res) => {
     let cityid = req.params.cityid;
 
-    let [place] = await pool.execute('SELECT * FROM  `place` WHERE ID_CITY = ?', [cityid]);
+    let [place] = await pool.execute('SELECT `place`.*,  GROUP_CONCAT(image.IMAGE_URL) as imgs FROM `place` JOIN `image` ON `image`.ID_PLACE = `place`.ID GROUP BY `place`.ID HAVING ID_CITY = ?', [cityid]);
     console.log('check id CITY ', cityid);
     console.log('check param', req.params)
-    return res.send(JSON.stringify(place))
+    return res.render('places.ejs', { dataplace: place })
+    //return res.send(JSON.stringify(place))
 }
 
 module.exports = {

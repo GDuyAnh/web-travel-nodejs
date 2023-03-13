@@ -1,0 +1,167 @@
+.container .title {
+    text-align: center;
+}
+
+.all {
+    color: black;
+    text-align: center;
+}
+
+.container-places {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 15%;
+}
+
+.place-div {
+    max-width: 340px;
+    min-width: 340px;
+    min-height: 450px;
+    max-height: 450px;
+    margin: 14px 5px;
+    list-style: none;
+}
+
+.mySlides {
+    display: none
+}
+
+/* Slideshow container */
+.slideshow-container680 {
+    background-color: black;
+    min-height: 320px;
+    position: relative;
+}
+
+.dot-div {
+    margin-top: -9%;
+    margin-bottom: 4%;
+    position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: -22px;
+    position: absolute;
+    top: 50%;
+    transition: 0.3s ease;
+    user-select: none;
+    width: 32px;
+    height: 32px;
+    background-color: black;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.prev i,
+.next i {
+    font-size: 13px;
+    margin-top: 30%;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(255, 255, 255, 0.304);
+    color: black;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    background-color: #ffffffc6;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    transition: background-color 1s ease 1s ease-out;
+    margin: 0px 2px;
+
+}
+
+.active,
+.dot:hover {
+    height: 12px;
+    width: 12px;
+    margin-bottom: -2px;
+    background-color: #ffffff;
+}
+
+.infor-title {
+    font-size: 17px;
+    margin: 2px 0px;
+}
+
+.infor-rate {
+    margin: 2px 0px;
+}
+
+.infor-description {
+    font-size: 14px;
+    margin: 2px 0px;
+}
+
+.comment-user {
+    margin: 4px 0px;
+}
+
+.comment-user div {
+    display: inline;
+}
+
+.comment-user img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.commnet-text {
+    font-size: 13px;
+}
+
+.rating {
+    float: left;
+    margin-top: 1%;
+    margin-right: 1%;
+}
+
+.rating label {
+    color: #90A0A3;
+    float: right;
+    font-size: 10px;
+    margin-left: 1px;
+}
+
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating input[type="radio"]:checked~label {
+    color: orange;
+}
+
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/homestyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <title>Document</title>
+</head>
+<!-- <script>
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function () {
+        if (this.readyState == 4) {
+
+            var myObject = eval('(' + request.responseText + ')');
+            document.getElementById('btn_text').value = myObject.title;
+            console.log(myObject.title);
+        }
+    }
+
+    let okClick = function () {
+        request.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
+        request.send();
+    }
+
+
+</script> -->
+
+<body>
+    <div class="container">
+        <h1 class="title">Các địa điểm du lịch hàng đầu tại Đà Nẵng</h1>
+        <a href="#" class="all">
+            <p><b>Xem tất cả</b></p>
+        </a>
+
+        <div class="container-places">
+            <% for(let i=0 ; i < dataplace.length ; i++){ %>
+                <div class="place-div">
+                    <div class="img-div">
+                        <div class="slideshow-container680" id="slide<%=i+1 %>" slideIndex="<%=i+1 %>">
+                            <!-- Full-width images with number and caption text -->
+                            <% let imgs=dataplace[i].imgs.split(",")%>
+                                <% for(let j=0;j < imgs.length ;j++){ %>
+                                    <div class="mySlides fade">
+                                        <img src="<%= imgs[j]%>" style="object-fit: cover;width: 340px;height: 340px;"
+                                            alt="">
+                                    </div>
+                                    <% } %>
+                                        <!-- Next and previous buttons -->
+                                        <div>
+                                            <a class="prev" onclick="plusSlides(-1, '<%= i+1%>')"><i
+                                                    class="fa-solid fa-arrow-left"></i></a>
+                                            <a class="next" onclick="plusSlides(1, '<%= i+1%>')"><i
+                                                    class="fa-solid fa-arrow-right"></i></a>
+                                        </div>
+
+
+                                        <!-- The dots/circles -->
+                                        <div class="dot-div" style="text-align:center">
+                                            <% for(let j=0;j < imgs.length ;j++){ %>
+                                                <span class="dot"
+                                                    onclick="currentSlide('<%= j+1%>', '<%= i+1%>')"></span>
+                                                <% } %>
+                                        </div>
+                        </div>
+                    </div>
+                    <div class="infor-div">
+                        <div class="infor-title"><b>
+                                <%= (i+1) + ". " + dataplace[i].NAME %>
+                            </b>
+                        </div>
+                        <div class="infor-rate clearfix">
+                            <div class="rating">
+                                <input type="radio" id="star5" name="rating" value="5" />
+                                <label class="star" for="star5"><span class="fa fa-star"></span></label>
+                                <input type="radio" id="star4" name="rating" value="4" />
+                                <label class="star" for="star4"><span class="fa fa-star"></span></label>
+                                <input type="radio" id="star3" name="rating" value="3" />
+                                <label class="star" for="star3"><span class="fa fa-star"></span></label>
+                                <input type="radio" id="star2" name="rating" value="2" />
+                                <label class="star" for="star2"><span class="fa fa-star"></span></label>
+                                <input type="radio" id="star1" name="rating" value="1" />
+                                <label class="star" for="star1"><span class="fa fa-star"></span></label>
+                            </div>
+                            <div>0</div>
+                        </div>
+                        <div class="infor-description clearfix">
+                            <%=dataplace[i].ADDRESS_PLACE%>
+                        </div>
+                        <div class="infor-comment">
+                            <div class="comment-user">
+                                <img style="vertical-align:middle;"" src=" #">
+                                <div style="vertical-align:middle; display:inline;">
+                                    No Found
+                                </div>
+
+                            </div>
+                            <div class=" commnet-text">
+                                <span>........</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+
+</body>
+<script>
+    function onCreate() {
+        slideArr = document.getElementsByClassName('slideshow-container680')
+        for (i = 0; i < slideArr.length; i++) {
+            index = slideArr[i].getAttribute('slideIndex');
+            showSlides(index, i + 1);
+        }
+    }
+
+    onCreate()
+
+    // Next/previous controls
+    function plusSlides(n, numSlide) {
+        slideIndex = document.getElementById('slide' + numSlide).getAttribute('slideIndex');
+        slideIndex = parseInt(slideIndex);
+        document.getElementById('slide' + numSlide).setAttribute('slideIndex', slideIndex += n);
+        showSlides(slideIndex, numSlide);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n, numSlide) {
+        showSlides(slideIndex = n, numSlide);
+    }
+
+    function showSlides(n, numSlide) {
+        IDSlide = 'slide' + numSlide;
+        slideParent = document.getElementById(IDSlide);
+        var i;
+        var slides = slideParent.getElementsByClassName("mySlides");
+        var dots = slideParent.getElementsByClassName("dot");
+        slideIndex = slideParent.getAttribute('slideIndex');
+        if (n > slides.length) {
+            slideIndex = 1
+            slideParent.setAttribute('slideIndex', slideIndex)
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+            slideParent.setAttribute('slideIndex', slideIndex)
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+
+
+    }
+
+    //rating
+
+</script>
+
+</html>
