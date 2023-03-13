@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class=" w3-container">
+        <h2>List CIty</h2>
+
+        <table class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-light-grey">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Note</th>
+
+
+                </tr>
+            </thead>
+
+            <% for(let i=0; i < datacity.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= datacity[i].ID %>
+                    </td>
+
+                    <td>
+                        <%= datacity[i].NAME %>
+                    </td>
+
+                    <td>
+                        <%= datacity[i].NOTE %>
+                    </td>
+
+                </tr>
+                <% } %>
+
+        </table>
+
+
+    </div>
+    </div>
+    <form action="/checklogin" method="POST">
+        <label>USER NAME</label>
+        <input type="text" name="username">
+
+        <label>PASSWORD</label>
+        <input type="text" name="password">
+
+
+
+        <button type="submit">OK</button>
+    </form>
+
+
+</body>
+
+</html>
