@@ -59,6 +59,29 @@ let getplaceDetail = async (req, res) => {
     return res.render('placeDetail.ejs', { dataplace: placeDetail })
 }
 
+let registerUser = async (req, res) => {
+    let test = req.body;
+    console.log(test);
+    return res.render('register.ejs')
+
+}
+
+let checkregister = async (req, res) => {
+    let name_register = req.body.name_register;
+    let email_register = req.body.email_register;
+    let username_register = req.body.username_register;
+    let password_register = req.body.psw_register;
+    let test = req.body
+    console.log(test)
+
+    console.log(name_register)
+    console.log(email_register)
+    console.log(username_register)
+    console.log(password_register)
+    const [registerUser] = await pool.execute('INSERT INTO `user`(`NAME`,  `EMAIL`, ) VALUES ( ? , ? )', [name_register, email_register]);
+
+}
+
 module.exports = {
-    getHomepage, getplace, login, checklogin, showUserID, getplaceDetail
+    getHomepage, getplace, login, checklogin, showUserID, getplaceDetail, registerUser, checkregister
 }

@@ -18,6 +18,12 @@ const initWebRouter = (app) => {
 
     router.get('/placedetail/:placeid', homeController.getplaceDetail)
 
+    router.get('/register', homeController.registerUser)
+
+    router.post('/checkregister', homeController.checkregister)
+
+
+
 
     router.get('/about', (req, res) => {
         res.send('Im DUY ANH')
