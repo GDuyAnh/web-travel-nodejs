@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            border: 1px solid gray;
+            padding: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            color: #4CAF50;
+        }
+
+        p {
+            text-indent: 50px;
+            text-align: justify;
+            letter-spacing: 3px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #008CBA;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div>
+        <% for(let i=0; i < dataplace.length; i++) { %>
+            <h1>
+                <%= dataplace[i].NAME %>
+            </h1>
+
+
+            <img src="<%= dataplace[i].MAP_PLACE %> " alt="Paris" class="center">
+
+
+            <% } %>
+
+    </div>
+
+</body>
+
+</html>

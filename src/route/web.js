@@ -14,6 +14,10 @@ const initWebRouter = (app) => {
 
     router.post('/checklogin', homeController.checklogin)
 
+    router.get('/userdetail/:userID', homeController.showUserID)
+
+    router.get('/placedetail/:placeid', homeController.getplaceDetail)
+
 
     router.get('/about', (req, res) => {
         res.send('Im DUY ANH')

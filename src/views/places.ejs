@@ -32,9 +32,9 @@
 
 <body>
     <div class="container">
-        <h1 class="title">Các địa điểm du lịch hàng đầu tại Đà Nẵng</h1>
+        <h1 class="title">Top Attractions in Da Nang</h1>
         <a href="#" class="all">
-            <p><b>Xem tất cả</b></p>
+            <p><b>See all</b></p>
         </a>
 
         <div class="container-places">
@@ -70,7 +70,10 @@
                     </div>
                     <div class="infor-div">
                         <div class="infor-title"><b>
-                                <%= (i+1) + ". " + dataplace[i].NAME %>
+                                <a href="/placedetail/<%= dataplace[i].ID  %>">
+                                    <%= (i+1) + ". " + dataplace[i].NAME %>
+                                </a>
+
                             </b>
                         </div>
                         <div class="infor-rate clearfix">

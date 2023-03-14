@@ -9,6 +9,12 @@ let getHomepage = async (req, res) => {
 
 }
 
+let showUserID = async (req, res) => {
+    let userID = req.params.userID;
+    const [User, fields] = await pool.execute('SELECT * FROM `user`  WHERE `user`.ID = ? ', [userID]);
+    return res.render('showinforUser.ejs', { user: User[0] })
+}
+
 
 
 let login = (req, res) => {
@@ -41,6 +47,18 @@ let getplace = async (req, res) => {
     //return res.send(JSON.stringify(place))
 }
 
+let getplaceDetail = async (req, res) => {
+
+
+    let placeid = req.params.placeid;
+
+    console.log('placeid ', placeid)
+
+    let [placeDetail] = await pool.execute('SELECT * FROM `place` WHERE id = ?', [placeid]);
+    console.log(placeDetail);
+    return res.render('placeDetail.ejs', { dataplace: placeDetail })
+}
+
 module.exports = {
-    getHomepage, getplace, login, checklogin
+    getHomepage, getplace, login, checklogin, showUserID, getplaceDetail
 }

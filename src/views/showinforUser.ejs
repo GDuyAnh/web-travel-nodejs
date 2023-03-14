@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/style_userDetail.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="user-detail-container">
+        <!--   ya dekhi -->
+        <div class="user-detail">
+            <div class="upper-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card user-profile-card" data-mh="card-one">
+                            <div class="card-img-top">
+                                <img src="<%= user.IMAGE %>" alt="">
+                            </div>
+                            <div class="card-body">
+                                <h3>
+                                    <%= user.NAME %>
+                                </h3>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card user-detail-card" data-mh="card-one">
+                            <p><span>Gender :</span>
+                                <%= user.GENDER %>
+                            </p>
+
+                            <p><span>Email :</span>
+                                <%= user.EMAIL %>
+                            </p>
+                            <p><span>Address :</span>
+                                <%= user.ADDRESS %>
+                            </p>
+
+                            <p><span>Phone no. :</span>
+                                <%= user.PHONE %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-card">
+                <div class="card">
+                    <div class="box">
+                        <!-- User Detail -->
+                        <div class="parent-container">
+                            <ul class="faq">
+                                <li>
+                                    <h3 class="question">
+                                        Da Nang
+                                        <div class="plus-minus-toggle collapsed"></div>
+                                    </h3>
+                                    <div class="answer">
+                                        <p class="list-title">Cau Rong :</p> <span> + 1</span>
+                                        <p class="list-title">Lady Buddha :</p> <span>+ 1</span>
+                                        <p class="list-title">Núi Ngũ Hành Sơn :</p><span>+ 1</span>
+
+                                        <p class="list-title">Bà Nà Hills :</p><span>+ 1</span>
+
+                                        <p class="list-title">Son Tra Moutain :</p><span>+ 1</span>
+
+                                        <p class="list-title">My Khe Beach :</p><span>+ 1</span>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="question">TP. HCM
+                                        <div class="plus-minus-toggle collapsed"></div>
+                                    </h3>
+                                    <div class="answer">
+                                        Nothing here
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="question">Ha Noi
+                                        <div class="plus-minus-toggle collapsed"></div>
+                                    </h3>
+                                    <div class="answer">
+                                        Nothing here
+                                    </div>
+                                </li>
+                                <li>
+                                    <h3 class="question">More about me
+                                        <div class="plus-minus-toggle collapsed"></div>
+                                    </h3>
+                                    <div class="answer">
+                                        <p class="list-title">Email</p>
+                                        <span>UserWithID1@gmail.com</span>
+                                        <p class="list-title">Phone no.</p>
+                                        <span>0903456789</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--   ya samma -->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('.faq li .question').click(function () {
+            $(this).find('.plus-minus-toggle').toggleClass('collapsed');
+            $(this).parent().toggleClass('active');
+        });
+    </script>
+</body>
+
+</html>
