@@ -40,7 +40,7 @@ let checklogin = async (req, res) => {
 let getplace = async (req, res) => {
     let cityid = req.params.cityid;
 
-    let [place] = await pool.execute('SELECT `place`.*,  GROUP_CONCAT(image.IMAGE_URL) as imgs FROM `place` JOIN `image` ON `image`.ID_PLACE = `place`.ID GROUP BY `place`.ID HAVING ID_CITY = ?', [cityid]);
+    let [place] = await pool.execute('SELECT `place`.*,  GROUP_CONCAT(image.IMAGE_URL) as imgs, review.COMMENT, review.RATING, user.NAME as uNAME, user.IMAGE  FROM `place` JOIN `image` ON `image`.ID_PLACE = `place`.ID JOIN `review` ON `review`.PLACE_ID = `place`.ID JOIN `user` ON user.ID = `review`.ID_USER GROUP BY `place`.ID  HAVING ID_CITY = ?', [cityid]);
     console.log('check id CITY ', cityid);
     console.log('check param', req.params)
     return res.render('places.ejs', { dataplace: place })
@@ -70,17 +70,20 @@ let registerUser = async (req, res) => {
 
 let checkregister = async (req, res) => {
     let name_register = req.body.name_register;
+    let age = req.body.age_regiser;
+    let phone = req.body.phone_register;
+    let gender = req.body.gender_register;
     let email_register = req.body.email_register;
+    let address = req.body.address_register;
     let username_register = req.body.username_register;
     let password_register = req.body.psw_register;
     let test = req.body
     console.log(test)
 
-    console.log(name_register)
-    console.log(email_register)
-    console.log(username_register)
-    console.log(password_register)
-    const [registerUser] = await pool.execute('INSERT INTO `user`(`NAME`,  `EMAIL`, ) VALUES ( ? , ? )', [name_register, email_register]);
+    await pool.execute('INSERT INTO `user`(`NAME`, `AGE`, `PHONE`, `GENDER`, `EMAIL`, `ADDRESS`, `IMAGE`) VALUES (?,?,?,?,?,?,?)', [name_register, age, phone, gender, email_register, address, "NULL"]);
+    await pool.execute("INSERT INTO `account`(`USER_NAME`, `PASWORD`) VALUES (?, ?)", [username_register, password_register])
+
+    return res.render('login.ejs')
 
 }
 
