@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    max-width: 1024px;
+    margin: 20px auto;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+img {
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    display: block;
+    object-fit: cover;
+
+}
+
+p {
+    margin: 4px;
+}
+
+.fa-star {
+    color: #FEC902;
+}
+
+
+input[type="text"] {
+    width: 84%;
+    margin: 10px 0;
+    height: 40px;
+    border: none;
+    background: #F6F6F6;
+    padding: 1em;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    color: rgba(0, 0, 0, 0.641);
+    margin: 10px 0;
+    height: 150px;
+    padding: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 20px;
+    resize: none;
+    font-size: 15px;
+}
+
+
+.review {
+    width: 100%;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.review-photo {
+    height: 80px;
+    width: 80px;
+    display: inline-block;
+    float: left;
+    margin-right: 3em;
+}
+
+.review-box {
+    float: left;
+    display: inline-block;
+    width: 87.5%;
+    background: #e9e9e9;
+    padding: 1.5em;
+    position: relative;
+    border-radius: 10px;
+}
+
+.review-box:after,
+.review-box:before {
+    right: 99.5%;
+    top: 1%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.review-box:after {
+    border-right-color: #e9e9e9;
+    border-width: 25px;
+}
+
+.review-comment {
+    color: #9A9999;
+}
+
+.review-date {
+    color: #C7C7C7;
+}
+
+.review-author {
+    color: #C7C7C7;
+}
+
+.review-author strong {
+    color: black;
+}
+
+.stars {
+    margin: 20px 0;
+    font-size: 24px;
+    color: #FEC902;
+}
+
+.btn-indie-trans {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border: none;
+    width: 100px;
+    height: 40px;
+    float: right;
+    margin-top: -2%;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    transition: 0.5s;
+}
+
+.btn-indie-trans:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 3px solid rgba(0, 0, 0, 0.686);
+}
+
+
+
+.container {
+    background-color: #F5F5F5;
+    padding: 0px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 20px;
+}
+
+.clearfix::after {
+    content: " ";
+    /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}

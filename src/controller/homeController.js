@@ -55,8 +55,10 @@ let getplaceDetail = async (req, res) => {
     console.log('placeid ', placeid)
 
     let [placeDetail] = await pool.execute('SELECT * FROM `place` WHERE id = ?', [placeid]);
+    let [review] = await pool.execute('SELECT review.*,user.NAME, user.IMAGE FROM review JOIN user ON user.ID = review.ID_USER WHERE PLACE_ID = ?', [placeid]);
+
     console.log(placeDetail);
-    return res.render('placeDetail.ejs', { dataplace: placeDetail })
+    return res.render('placeDetail.ejs', { dataPlace: placeDetail[0], reviewData: review })
 }
 
 let registerUser = async (req, res) => {

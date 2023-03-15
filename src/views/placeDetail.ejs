@@ -1,92 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <style>
-        div {
-            border: 1px solid gray;
-            padding: 8px;
-        }
-
-        h1 {
-            text-align: center;
-            text-transform: uppercase;
-            color: #4CAF50;
-        }
-
-        p {
-            text-indent: 50px;
-            text-align: justify;
-            letter-spacing: 3px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #008CBA;
-        }
-
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 80%;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/comment.css">
+    <link rel="stylesheet" href="/css/review_comment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div>
-        <% for(let i=0; i < dataplace.length; i++) { %>
-            <h1>
-                <%= dataplace[i].NAME %>
-            </h1>
+    <div class="container">
+        <div class="row" style="margin-top:40px;">
+            <div class="col-md-6">
+                <div class="well well-sm">
+                    <div class="row" id="post-review-box">
+                        <div class="col-md-12">
+                            <div class="stars">
+                                <span class="fa-solid fa-star"></span>
+                                <span class="fa-solid fa-star"></span>
+                                <span class="fa-solid fa-star"></span>
+                                <span class="fa-regular fa-star"></span>
+                                <span class="fa-regular fa-star"></span>
+                            </div>
+                            <form accept-charset="UTF-8" action="" method="post" class="form-review">
+                                <input id="ratings-hidden" name="rating" type="hidden">
+                                <textarea class="form-control animated" cols="50" id="new-review" name="comment"
+                                    placeholder="Enter your review here..." rows="5"></textarea>
 
+                                <div class="text-right clearfix">
+                                    <br>
+                                    <button class="btn btn-indie-trans" type="submit">Publish</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <img src="<%= dataplace[i].MAP_PLACE %> " alt="Paris" class="center">
+    <div id="app">
+        <% for(let i=0; i < reviewData.length; i++){ %>
+            <div class="review">
+                <div class="review-photo">
+                    <img src="<%= reviewData[i].IMAGE %>" alt="">
+                </div>
+                <div class="review-box">
+                    <div class="review-author">
+                        <p><strong>
+                                <%=reviewData[i].NAME%>
+                            </strong> -
 
+                            <% for(let j=0;j < reviewData[i].RATING;j++){ %>
+                                <i class="fa-solid fa-star" aria-hidden="true"></i>
+                                <% } %>
+                                    <% for(let j=0;j < 5-reviewData[i].RATING;j++){ %>
+                                        <i class="fa-regular fa-star" aria-hidden="true"></i>
+                                        <% } %>
+
+                                            - <%=dataPlace.NAME%>
+                        </p>
+                    </div>
+                    <div class="review-comment">
+                        <p>
+                            <%= reviewData[i].COMMENT %>
+                        </p>
+                    </div>
+                    <div class="review-date">
+                        <time>July, 27th, 2016</time>
+                    </div>
+                </div>
+
+            </div>
 
             <% } %>
 
     </div>
-    <div class="row">
-        <div class="avatar_comment col-md-1">
-            <img src="https://vtv1.mediacdn.vn/thumb_w/650/2022/3/4/avatar-jake-neytiri-pandora-ocean-1646372078251163431014-crop-16463720830272075805905.jpg"
-                alt="avatar" />
-        </div>
-        <div class="box_comment col-md-11">
-            <textarea class="commentar" placeholder="Add a comment..."></textarea>
-        </div>
-    </div>
-
-    <ul id="list_comment" class="col-md-12">
-        <!-- Start List Comment 1 -->
-        <li class="box_result row">
-            <div class="avatar_comment col-md-1">
-                <img src="https://thuvienanime.com/wp-content/uploads/2022/09/Zenitsu.jpg" alt="avatar" />
-            </div>
-            <div class="result_comment col-md-11">
-                <h4>Zenitsu</h4>
-                <p>Nice City</p>
-            </div>
-        </li>
-        <!-- Start List Comment 2 -->
-        <li class="box_result row">
-            <div class="avatar_comment col-md-1">
-                <img src="https://cdn.popsww.com/blog/sites/2/2022/02/yoriichi-la-gi-cua-tanjiro.jpg" alt="avatar" />
-            </div>
-            <div class="result_comment col-md-11">
-                <h4>Tanjiro Kamado</h4>
-                <p>Da Nang is so beautiful</p>
-
-                <ul class="child_replay"></ul>
-            </div>
-        </li>
-        </div>
 </body>
 
 </html>
